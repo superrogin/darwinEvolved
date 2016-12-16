@@ -109,6 +109,16 @@ catkin_package(
 ## Build ##
 ###########
 
+
+
+## wiring pi
+# search for libraries
+FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/pi/wiringPi)
+
+
+
+
+
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
@@ -131,11 +141,11 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
- add_dependencies(darwin_mini_evolved_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+ add_dependencies(darwin_mini_evolved_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} wiringPi)
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(darwin_mini_evolved_node
-   ${catkin_LIBRARIES}
+   ${catkin_LIBRARIES} ${WIRINGPI_LIBRARY}
  )
 
 #############
